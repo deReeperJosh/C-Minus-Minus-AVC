@@ -44,9 +44,9 @@ int getError(std::vector<bool> pixelStates) {
 	for (int counter = 0; counter < pixelStates.size() - 1; counter += 1) {
 		if (pixelStates.at(counter)) {
 			totalWhitePixels ++;
-			const int pixelWeight = counter - (pixelStates.sixe() / 2);
+			const int pixelWeight = counter - (pixelStates.size() / 2);
 			totalError += pixelWeight;
-			totalError/numWhitePixels;
+			totalError /= numWhitePixels;
 		}
 	}
 	return totalError;
