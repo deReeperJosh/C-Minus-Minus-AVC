@@ -1,8 +1,6 @@
 #include "tapeSensor.h"
 
 using namespace std;
-const int PICTURE_ROWS = 240;
-const int PICTURE_COLUMNS = 320;
 
 /**
  * @param pixelValues Pass an vector object, the function works on this parameter by reference.
@@ -11,7 +9,7 @@ const int PICTURE_COLUMNS = 320;
 void getPixelValues(std::vector<int> &pixelValues, const int size) {
 	take_picture();
 	for (int counter = 0; counter < size; counter += 1) {
-		int pixelValue = get_pixel((PICTURE_ROWS / 2), counter, 3);
+		int pixelValue = get_pixel((constants::picture::ROWS / 2), counter, 3);
 		pixelValues.push_back(pixelValue);
 	}
 }
@@ -24,10 +22,9 @@ void getPixelValues(std::vector<int> &pixelValues, const int size) {
  * @param pixelValues Pass a vector object of pixelValues between 0 and 255.
  */
 void calculatePixelStates(std::vector<bool> &pixelStates, const int size, std::vector<int> pixelValues) {
-	const int MAXIMUM_BLACK_VALUE = 127;
 	for (int counter = 0; counter < pixelValues.size() - 1; counter += 1) {
 		int pixelValue = pixelValues.at(counter);
-		if (pixelValue > MAXIMUM_BLACK_VALUE) {
+		if (pixelValue > constants::picture::MAXIMUM_BLACK_VALUE) {
 			pixelValues.push_back(true);
 		}
 		else {
@@ -61,8 +58,8 @@ int getError(std::vector<bool> pixelStates) {
  */
 int getError() {
 	std::vector<int> pixelWhitenessValues;
-	getPixelValues(pixelWhitenessValues, PICTURE_ROWS);
+	getPixelValues(pixelWhitenessValues, constants::picture::ROWS);
 	std::vector<bool> pixelStateValues;
-	calculatePixelStates(pixelStateValues, PICTURE_ROWS, pixelWhitenessValues);
+	calculatePixelStates(pixelStateValues, constants::picture::ROWS, pixelWhitenessValues);
 	return getError(pixelStateValues);
 }
