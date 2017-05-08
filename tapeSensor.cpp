@@ -43,9 +43,10 @@ int getError(std::vector<bool> pixelStates) {
 	int totalWhitePixels = 0;
 	for (int counter = 0; counter < pixelStates.size() - 1; counter += 1) {
 		if (pixelStates.at(counter) == true) {
-			totalWhitePixels += 1;
+			totalWhitePixels ++1;
 			const int pixelWeight = counter - (pixelStates.sixe() / 2);
 			totalError += pixelWeight;
+			totalError/numWhitePixels;
 		}
 	}
 	return totalError;
@@ -58,7 +59,7 @@ int getError(std::vector<bool> pixelStates) {
  */
 int getError() {
 	std::vector<int> pixelWhitenessValues;
-	getPixelValues(pixelWhitenessValues, constants::picture::ROWS);
+	getPixelValues(pixelWhitenessValues, constants::picture::COLUMNS);
 	std::vector<bool> pixelStateValues;
 	calculatePixelStates(pixelStateValues, constants::picture::ROWS, pixelWhitenessValues);
 	return getError(pixelStateValues);
