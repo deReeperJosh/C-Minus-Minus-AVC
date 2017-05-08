@@ -6,11 +6,12 @@ using namespace std;
  * @param pixelValues Pass an vector object, the function works on this parameter by reference.
  * @param size Pass the absolute size that the vector should be.
  * */
-void getPixelValues(std::vector<int> &pixelValues, const int size) {
+void getPixelValues(std::vector<int> &pixelWhitenessValues, const int COLUMNS) {
 	take_picture();
-	for (int counter = 0; counter < size; counter += 1) {
+	for (int counter = 0; counter < COLUMNS; counter ++) {
 		int pixelValue = get_pixel((constants::picture::ROWS / 2), counter, 3);
-		pixelValues.push_back(pixelValue);
+		//pushes value to the end of the list
+		pixelWhitenessValues.push_back(pixelValue);
 	}
 }
 
@@ -21,7 +22,7 @@ void getPixelValues(std::vector<int> &pixelValues, const int size) {
  * @param size Pass the absolute size that the pixelStates vector should be.
  * @param pixelValues Pass a vector object of pixelValues between 0 and 255.
  */
-void calculatePixelStates(std::vector<bool> &pixelStates, const int size, std::vector<int> pixelValues) {
+void calculatePixelStates(std::vector<bool> &pixelStateValues, const int size, std::vector<int> pixelValues) {
 	for (int counter = 0; counter < pixelValues.size() - 1; counter += 1) {
 		int pixelValue = pixelValues.at(counter);
 		if (pixelValue > constants::picture::MAXIMUM_BLACK_VALUE) {
@@ -61,6 +62,6 @@ int getError() {
 	std::vector<int> pixelWhitenessValues;
 	getPixelValues(pixelWhitenessValues, constants::picture::COLUMNS);
 	std::vector<bool> pixelStateValues;
-	calculatePixelStates(pixelStateValues, constants::picture::ROWS, pixelWhitenessValues);
+	calculatePixelStates(pixelStateValues, constants::picture::COLUMNS, pixelWhitenessValues);
 	return getError(pixelStateValues);
 }
