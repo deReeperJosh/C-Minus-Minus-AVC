@@ -1,4 +1,5 @@
 #include "E101.h"
+#include "iostream"
 using namespace std;
 
 const int PICTURE_ROWS = 240;
