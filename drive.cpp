@@ -1,10 +1,10 @@
 #include "drive.h"
 
 /**
- * @note Drives the robot forwards considering the error value in line follow mode
+ * @note UNTESTED (it's not gonna work). Drives the robot forwards considering the error value in line follow mode
  * @param error Pass a signed int for the error value
  */
-void lineDrive(const int error){
+void lineDrive(const int error) {
 	const int LEFT_MOTOR = 1;
 	const int RIGHT_MOTOR = 2;
 	const double SCALE = 2;
@@ -30,9 +30,12 @@ void lineDrive(const int error){
 	set_motor(RIGHT_MOTOR, rightMotorSpeed);
 	sleep1(SLEEP_TIME_SECONDS, SLEEP_TIME_MILLISECONDS);
 }
+
 /**
  * @note Starts the robots drive routine
  */
-void drive(){
-	lineDrive(getError());
+void drive() {
+	while(true){
+		lineDrive(getError());
+	}
 }
