@@ -4,10 +4,6 @@ using namespace std;
 const int PICTURE_ROWS = 240;
 const int PICTURE_COLUMNS = 320;
 
-int getError() {
-	return get_pixel()[0];
-}
-
 int *getPixelValues() {
 	take_picture();
 	int pixelValues[PICTURE_COLUMNS];
@@ -16,6 +12,10 @@ int *getPixelValues() {
 		cout << get_pixel(counter, (PICTURE_ROWS / 2), 3);
 	}
 	return pixelValues;
+}
+
+int getError() {
+	return getPixelValues()[0];
 }
 
 int main() {
