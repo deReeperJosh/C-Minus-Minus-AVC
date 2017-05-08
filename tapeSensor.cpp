@@ -1,6 +1,4 @@
-#include "E101.h"
-#include "iostream"
-#include "vector"
+#include "tapeSensor.h"
 
 using namespace std;
 const int PICTURE_ROWS = 240;
@@ -57,18 +55,14 @@ int getError(std::vector<bool> pixelStates) {
 }
 
 /**
- * @return Returns an signed integer value for the calculated error. A negative value shows that there are a higher
- * weight of white pixels to the left, a positive value implies the same, except to the right.
+ * @return Returns an signed integer value for the calculated error (currently for all pixels in the row). A negative
+ * value shows that there are a higher weight of white pixels to the left, a positive value implies the same, except
+ * to the right.
  */
-int getError(){
+int getError() {
 	std::vector<int> pixelWhitenessValues;
 	getPixelValues(pixelWhitenessValues, PICTURE_ROWS);
 	std::vector<bool> pixelStateValues;
 	calculatePixelStates(pixelStateValues, PICTURE_ROWS, pixelWhitenessValues);
 	return getError(pixelStateValues);
-}
-
-int main() {
-	getError();
-	return 0;
 }
