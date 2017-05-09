@@ -32,4 +32,5 @@ void drive() {
 	while(true){
 		lineDrive(getError());
 	}
+	set_motor(1, 127);
 }
