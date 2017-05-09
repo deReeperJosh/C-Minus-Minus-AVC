@@ -1,5 +1,7 @@
-#include "drive.h"
+#include "main.h"
 
 int main() {
-	while(true) drive();
+	init();
+	drive();
+	return 0;
 }
