@@ -24,6 +24,15 @@ void turnLeft(int speed){
   driveSleep();  
   stopDriving();
 }
+
+void turn(int speed){
+  if (speed > 0){
+    turnRight(speed); 
+  }else{
+    turnLeft(-speed);
+  }
+}
+
 void stopDriving(){
   set_motor(constants::vehicle::parts::RIGHT_MOTOR,0);
   set_motor(constants::vehicle::parts::LEFT_MOTOR,0);
