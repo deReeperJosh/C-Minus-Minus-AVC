@@ -14,7 +14,7 @@ namespace constants {
 		}
 		static const int STABLE_SPEED = 100;
 		static const int SLEEP_TIME_SECONDS = 0;
-		static const int SLEEP_TIME_MILLISECONDS = 5000;
+		static const int SLEEP_TIME_MICROSECONDS = 5000;
 	}
 	namespace PID {
 		static const int PROPORTIONAL_SCALE = 2;

@@ -22,7 +22,7 @@ void lineDrive(const int error) {
 	}
 	set_motor(constants::vehicle::parts::LEFT_MOTOR, leftMotorSpeed);
 	set_motor(constants::vehicle::parts::RIGHT_MOTOR, rightMotorSpeed);
-	sleep1(constants::vehicle::SLEEP_TIME_SECONDS, constants::vehicle::SLEEP_TIME_MILLISECONDS);
+	sleep1(constants::vehicle::SLEEP_TIME_SECONDS, constants::vehicle::SLEEP_TIME_MICROSECONDS);
 }
 
 /**
