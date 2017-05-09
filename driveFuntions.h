@@ -10,6 +10,7 @@ void driveBackward(double time,int speed);
 void turnLeft(double time,int speed);
 void turnRight(double time,int speed);
 void stopDriving();
+void driveSleep();
 
 
 
