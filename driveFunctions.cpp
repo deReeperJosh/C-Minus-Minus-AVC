@@ -1,27 +1,27 @@
-//driveForward is a function, given a time and speed will drive the robot forward
+//driveForward is a function, given a speed will drive the robot forward
 
 #include "driveFunction.h"
 
-void driveForward(double time, int speed){ //takes a speed between the values -254 and 254, takes a time in seconds
-  set_motor(RIGHT_MOTOR,speed);//turns the right motor on
-  set_motor(LEFT_MOTOR,-speed);//turns the left motor on in the opposite direction
-  sleep1(0,(int)(time*1000000)); //sleep1 takes time in micro-seconds so this needs to be multiplied by 10 
+void driveForward(int speed){ //takes a speed between the values -254 and 254
+  set_motor(RIGHT_MOTOR,speed);/
+  set_motor(LEFT_MOTOR,-speed);
+  sleep1(SLEEP_TIME_SECONDS,SLEEP_TIME_MICROSECONDS);  
   stopDriving();
 
 }
-void driveBackward(double time,int speed){
-  driveForward(time, -speed);
+void driveBackward(int speed){
+  driveForward(-speed);
 }
-void turnRight(double time,int speed){
-  set_motor(RIGHT_MOTOR,STABLE_SPEED);//turns the right motor on
-  set_motor(LEFT_MOTOR,-speed);//turns the left motor on in the opposite direction
-  sleep1(0,(int)(time*1000000)); //sleep1 takes time in micro-seconds so this needs to be multiplied by 10 
+void turnRight(int speed){
+  set_motor(RIGHT_MOTOR,STABLE_SPEED);
+  set_motor(LEFT_MOTOR,-speed);
+  sleep1(SLEEP_TIME_SECONDS,SLEEP_TIME_MICROSECONDS); 
   stopDriving();
 }
-void turnLeft(double time,int speed){
-  set_motor(RIGHT_MOTOR,speed);//turns the right motor on
-  set_motor(LEFT_MOTOR,-STABLE_SPEED);//turns the left motor on in the opposite direction
-  sleep1(0,(int)(time*1000000)); //sleep1 takes time in micro-seconds so this needs to be multiplied by 10 
+void turnLeft(int speed){
+  set_motor(RIGHT_MOTOR,speed);
+  set_motor(LEFT_MOTOR,-STABLE_SPEED);
+  sleep1(SLEEP_TIME_SECONDS,SLEEP_TIME_MICROSECONDS);  
   stopDriving();
 }
 void stopDriving(){
