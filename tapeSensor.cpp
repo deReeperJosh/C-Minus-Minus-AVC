@@ -30,7 +30,7 @@ void getPixelValues(std::vector<int> &pixelValues, const int COLUMNS) {
  */
 void calculatePixelStates(std::vector<bool> &pixelStateValues, const int size, std::vector<int> pixelValues) {
 	//for every pixel value, calculate if it is white or not
-	for (int counter = 0; counter < pixelValues.size() - 1; counter += 1) {
+	for (int counter = 0; counter < pixelValues.size(); counter += 1) {
 		//store the pixel whiteness value at this index in the pixelValues vector in the variable 'pixelValue'
 		int pixelValue = pixelValues.at(counter);
 		//if the pixel value is greater than the maximum specified value of black, it is therefore a white pixel
@@ -58,7 +58,7 @@ int getError(std::vector<bool> pixelStates) {
 	int totalError = 0;
 	int totalWhitePixels = 0;
 	//calculate the total error of the white code
-	for (int counter = 0; counter < pixelStates.size() - 1; counter += 1) {
+	for (int counter = 0; counter < pixelStates.size(); counter += 1) {
 		if (pixelStates.at(counter)) {
 			totalWhitePixels++;
 			const int pixelWeight = counter - (pixelStates.size() / 2);
