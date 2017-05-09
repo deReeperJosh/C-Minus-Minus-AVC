@@ -65,7 +65,8 @@ int getError(std::vector<bool> pixelStates) {
 			totalError += pixelWeight;
 		}
 	}
-	return totalError /= totalWhitePixels;
+	totalError != 0 ? totalError /= totalWhitePixels : null;
+	return totalError;
 }
 
 /**
@@ -73,16 +74,46 @@ int getError(std::vector<bool> pixelStates) {
  * value shows that there are a higher weight of white pixels to the left, a positive value implies the same, except
  * to the right.
  */
-int getError() {
-	//as getPixelValues works on a vector object by reference, we need to declare it before calling it
-	std::vector<int> pixelWhitenessValues;
-	printf("Getting pixel values");
-	getPixelValues(pixelWhitenessValues, constants::picture::COLUMNS);
-	//as pixelStateValues works on a vector object by reference, we need to declare it before calling it
-	std::vector<bool> pixelStateValues;
-	//only now is the pixelStateValues set, and we can calculate the error
-	printf("Calculating pixel states");
-	calculatePixelStates(pixelStateValues, constants::picture::COLUMNS, pixelWhitenessValues);
-	printf("Calling overload getError");
-	return getError(pixelStateValues);
+//int getError() {
+//	//as getPixelValues works on a vector object by reference, we need to declare it before calling it
+//	std::vector<int> pixelWhitenessValues;
+//	printf("Getting pixel values");
+//	getPixelValues(pixelWhitenessValues, constants::picture::COLUMNS);
+//	//as pixelStateValues works on a vector object by reference, we need to declare it before calling it
+//	std::vector<bool> pixelStateValues;
+//	//only now is the pixelStateValues set, and we can calculate the error
+//	printf("Calculating pixel states");
+//	calculatePixelStates(pixelStateValues, constants::picture::COLUMNS, pixelWhitenessValues);
+//	printf("Calling overload getError");
+//	return getError(pixelStateValues);
+//}
+
+int getError(){
+	take_picture();
+	int pixelStateValues[constants::picture::COLUMNS];
+	for (int counter = 0; counter < constants::picture::COLUMNS; counter += 1) {
+		int pixelWhiteness = get_pixel(constants::picture::ROWS, counter, 3);
+		if (pixelWhiteness > constants::picture::MAXIMUM_BLACK_VALUE) {
+			printf("White pixel");
+			pixelStateValues[counter] = 1;
+		}
+		else{
+			printf("Black pixel");
+			pixelStateValues[counter] = 0;
+		}
+	}
+	printf("Done finding white pixels");
+	int totalWhitePixels = 0;
+	int totalError = 0;
+	for (int counter = 0; counter < sizeof(pixelStateValues); counter += 1) {
+		if (pixelStateValues[counter] == 1) {
+			totalWhitePixels  += 1;
+			const int pixelWeight = counter - (pixelStates.size() / 2);
+			totalError += pixelWeight;
+		}
+	}
+	if(totalError != 0){
+		totalError /= totalWhitePixels;
+	}
+	return  totalError;
 }
