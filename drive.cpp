@@ -9,10 +9,12 @@ void lineDrive(const int error) {
 	int leftMotorSpeed;
 	int rightMotorSpeed;
 	if (scaledSpeed > 0) {
+		std::cout << "Scale speed > 0";
 		leftMotorSpeed = (int) scaledSpeed;
 		rightMotorSpeed = constants::vehicle::STABLE_SPEED;
 	}
 	else if (scaledSpeed < 0) {
+		std::cout << "Scale speed < 0";
 		leftMotorSpeed = constants::vehicle::STABLE_SPEED;
 		rightMotorSpeed = (int) scaledSpeed;
 	}
@@ -20,17 +22,25 @@ void lineDrive(const int error) {
 		leftMotorSpeed = constants::vehicle::STABLE_SPEED;
 		rightMotorSpeed = constants::vehicle::STABLE_SPEED;
 	}
+	std::cout << "Setting left motor speed";
 	set_motor(constants::vehicle::parts::LEFT_MOTOR, leftMotorSpeed);
+	std::cout << "Setting right motor speed";
 	set_motor(constants::vehicle::parts::RIGHT_MOTOR, rightMotorSpeed);
+	std::cout << "Sleeping";
 	sleep1(constants::vehicle::SLEEP_TIME_SECONDS, constants::vehicle::SLEEP_TIME_MICROSECONDS);
+	std::cout << "Stopping motors";
+	set_motor(constants::vehicle::parts::LEFT_MOTOR, 0);
+	set_motor(constants::vehicle::parts::RIGHT_MOTOR, 0);
+	std::cout << "Sleeping";
 }
 
 /**
  * @note Starts the robots drive routine
  */
 void drive() {
-	while(true){
-		lineDrive(getError());
-	}
-	set_motor(1, 127);
+	const int error = getError();
+	std::cout << "error: ";
+	std::cout << error;
+	std::cout << "Driving";
+	lineDrive(error);
 }

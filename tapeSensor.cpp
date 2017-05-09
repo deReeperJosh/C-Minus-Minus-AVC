@@ -77,10 +77,13 @@ int getError(std::vector<bool> pixelStates) {
 int getError() {
 	//as getPixelValues works on a vector object by reference, we need to declare it before calling it
 	std::vector<int> pixelWhitenessValues;
+	std::cout << "Getting pixel values";
 	getPixelValues(pixelWhitenessValues, constants::picture::COLUMNS);
 	//as pixelStateValues works on a vector object by reference, we need to declare it before calling it
 	std::vector<bool> pixelStateValues;
 	//only now is the pixelStateValues set, and we can calculate the error
+	std::cout << "Calculating pixel states";
 	calculatePixelStates(pixelStateValues, constants::picture::COLUMNS, pixelWhitenessValues);
+	std::cout << "Calling overload getError";
 	return getError(pixelStateValues);
 }
