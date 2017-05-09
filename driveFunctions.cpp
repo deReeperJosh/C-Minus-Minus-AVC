@@ -1,4 +1,7 @@
 //driveForward is a function, given a time and speed will drive the robot forward
+
+#include "driveFunction.h"
+
 void driveForward(double time, int speed){ //takes a speed between the values -254 and 254, takes a time in seconds
   set_motor(RIGHT_MOTOR,speed);//turns the right motor on
   set_motor(LEFT_MOTOR,-speed);//turns the left motor on in the opposite direction
