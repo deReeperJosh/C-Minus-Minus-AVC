@@ -8,8 +8,11 @@ namespace constants {
 		static const int COLUMNS = 320;
 		static const int MAXIMUM_BLACK_VALUE = 127;
 		static const int MINIMUM_RED_VALUE = 100;
-		namespace patch{
+		static const int MINIMUM_GREEN_VALUE = 100;
+		static const int MINIMUM_BLUE_VALUE = 100;
+		namespace redPatch{
 			static const int MINIMUM_RED_PIXELS = COLUMNS / 2;
+			static const double MINIMUM_RATIO_VALUE = 2.5;
 		}
 	}
 	namespace vehicle {

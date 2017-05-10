@@ -64,19 +64,39 @@ int totalPixelsWithinRange(const int minimumValue, const int maximumValue, std::
 	return totalPixelsWithinRange;
 }
 
+int averagePixelValues(std::vector<int> pixelValues) {
+	int totalValues = 0;
+	for (int counter = 0; counter < pixelValues.size(); counter += 1) {
+		totalValues += pixelValues.at(counter);
+	}
+	return totalValues / pixelValues.size();
+}
+
 /**
- * @note Determines wether the robot is on a patch of red pixels
+ * @note Determines wether the robot is on a redPatch of red pixels
  * @param pixelRednessValues Pass a vector object of type int with values between 0 and 255 of the pixel redness values
- * @return Returns true if it is evaluated that the robot is on a red patch, otherwise false
+ * @return Returns true if it is evaluated that the robot is on a red redPatch, otherwise false
  */
 bool isRedPatch(std::vector<int> pixelRednessValues) {
 	bool result = false;
 	//Pass a value 1 to signify that the getPixelValues method should find the red values for the pixels
-	std::vector<int> pixelRednessValues = getPixelValues(1);
-	int totalRedPixels = totalPixelsWithinRange(constants::picture::patch::MINIMUM_RED_PIXELS,
+	std::vector<int> pixelRednessValues = getPixelValues(0);
+	int totalRedPixels = totalPixelsWithinRange(constants::picture::redPatch::MINIMUM_RED_PIXELS,
 												constants::picture::MAXIMUM_POSSIBLE_PIXEL_VALUE, pixelRednessValues);
-	if (totalRedPixels >= constants::picture::patch::MINIMUM_RED_PIXELS) {
-		result = true;
+	//If the total amount of red pixels meets the requirements, the ratio of red values to green values can then be
+	//	calculated. A number of red pixels is used as it is a good way to think about the problem knowing that there's
+	//	black either side
+	if (totalRedPixels >= constants::picture::redPatch::MINIMUM_RED_PIXELS) {
+		//It is unnecessary to find the greeness and blueness levels outside of this scope
+		std::vector<int> pixelGreenessValues = getPixelValues(1);
+		std::vector<int> pixelBluenessValues = getPixelValues(2);
+		int averageNonRedValues =
+			(averagePixelValues(pixelGreenessValues) + averagePixelValues(pixelBluenessValues)) / 2;
+		int averageRedValues = averageRedValues(pixelRednessValues);
+		double ratioOfAverageRedValuesToNonRedValues = (double) averageNonRedValues / (double) averageNonRedValues;
+		if(ratioOfAverageRedValuesToNonRedValues >= constants::picture::redPatch::MINIMUM_RATIO_VALUE){
+			result = true;
+		}
 	}
 	return result;
 }
