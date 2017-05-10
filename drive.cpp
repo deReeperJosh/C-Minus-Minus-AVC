@@ -38,9 +38,9 @@ void lineDrive(const int error) {
  * @note Starts the robots drive routine
  */
 void drive() {
-	while (true) {
+	for(int counter = 0; counter < 99999; counter += 1) {
 		const int error = getError();
 		printf("Error: %i\n", error);
-		drive(error);
+		lineDrive(error);
 	}
 }

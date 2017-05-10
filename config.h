@@ -12,7 +12,7 @@ namespace constants {
 			static const int LEFT_MOTOR = 1;
 			static const int RIGHT_MOTOR = 2;
 		}
-		static const int STABLE_SPEED = 100;
+		static const int STABLE_SPEED = 50;
 		static const int SLEEP_TIME_SECONDS = 0;
 		static const int SLEEP_TIME_MICROSECONDS = 5000;
 	}
