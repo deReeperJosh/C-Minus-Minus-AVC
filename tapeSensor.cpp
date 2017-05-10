@@ -7,7 +7,7 @@ using namespace std;
  * @param pixelValues Pass an vector object, the function works on this parameter by reference.
  * @param size Pass the absolute size that the vector should be.
  * */
-void getPixelValues(std::vector<int> &pixelValues, const int COLUMNS) {
+std::vector<int> getPixelValues( &pixelValues, const int COLUMNS) {
 	//take a picture of the surface
 	take_picture();
 	//fill the pixelValues vector object to the given size using the middle
@@ -28,7 +28,8 @@ void getPixelValues(std::vector<int> &pixelValues, const int COLUMNS) {
  * @param size Pass the absolute size that the pixelStates vector should be.
  * @param pixelValues Pass a vector object of pixelValues between 0 and 255.
  */
-void calculatePixelStates(std::vector<bool> &pixelStateValues, const int size, std::vector<int> pixelValues) {
+std::vector<bool> calculatePixelStates(const int size, std::vector<int> pixelValues) {
+	std::vector<bool> pixelStateValues;
 	//for every pixel value, calculate if it is white or not
 	for (int counter = 0; counter < pixelValues.size(); counter += 1) {
 		//store the pixel whiteness value at this index in the pixelValues vector in the variable 'pixelValue'
@@ -36,14 +37,15 @@ void calculatePixelStates(std::vector<bool> &pixelStateValues, const int size, s
 		//if the pixel value is greater than the maximum specified value of black, it is therefore a white pixel
 		if (pixelValue > constants::picture::MAXIMUM_BLACK_VALUE) {
 			//add the value true to the end of the pixelValues object, signifying a white pixel
-			pixelValues.push_back(true);
+			pixelStateValues.push_back(true);
 		}
 		//otherwise, we know it is a black pixel
 		else {
 			//add the value false to the end of the pixelValues object, signifying a black pixel
-			pixelValues.push_back(false);
+			pixelStateValues.push_back(false);
 		}
 	}
+	return pixelStateValues;
 }
 
 /**
