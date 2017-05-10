@@ -7,16 +7,18 @@ using namespace std;
  * @param pixelValues Pass an vector object, the function works on this parameter by reference.
  * @param size Pass the absolute size that the vector should be.
  * */
-std::vector<int> getPixelValues( &pixelValues, const int COLUMNS) {
+std::vector<int> getPixelValues() {
 	//take a picture of the surface
 	take_picture();
+	std::vector<int> pixelValues;
 	//fill the pixelValues vector object to the given size using the middle
-	for (int counter = 0; counter < COLUMNS; counter += 1) {
+	for (int counter = 0; counter < constants::picture::COLUMNS; counter += 1) {
 		//calculates the whiteness value of a pixel by taking a pixel halfway down the image at index counter
 		int pixelValue = get_pixel((constants::picture::ROWS / 2), counter, 3);
 		//add the calculated whiteness value to the end of the vector object
 		pixelValues.push_back(pixelValue);
 	}
+	return pixelValues;
 }
 
 /**
@@ -29,9 +31,11 @@ std::vector<int> getPixelValues( &pixelValues, const int COLUMNS) {
  * @param pixelValues Pass a vector object of pixelValues between 0 and 255.
  */
 std::vector<bool> calculatePixelStates(std::vector<int> pixelValues) {
+	printf("Defined pixel states\n");
 	std::vector<bool> pixelStateValues;
 	//for every pixel value, calculate if it is white or not
 	for (int counter = 0; counter < pixelValues.size(); counter += 1) {
+		//printf("Counter: %i\n", counter);
 		//store the pixel whiteness value at this index in the pixelValues vector in the variable 'pixelValue'
 		int pixelValue = pixelValues.at(counter);
 		//if the pixel value is greater than the maximum specified value of black, it is therefore a white pixel
@@ -43,6 +47,7 @@ std::vector<bool> calculatePixelStates(std::vector<int> pixelValues) {
 		else {
 			//add the value false to the end of the pixelValues object, signifying a black pixel
 			pixelStateValues.push_back(false);
+			//printf("Pixel evaluated to false\n");
 		}
 	}
 	return pixelStateValues;
@@ -76,52 +81,13 @@ int getError(std::vector<bool> pixelStates) {
  * value shows that there are a higher weight of white pixels to the left, a positive value implies the same, except
  * to the right.
  */
-//int getError() {
-//	//as getPixelValues works on a vector object by reference, we need to declare it before calling it
-//	std::vector<int> pixelWhitenessValues;
-//	printf("Getting pixel values");
-//	getPixelValues(pixelWhitenessValues, constants::picture::COLUMNS);
-//	//as pixelStateValues works on a vector object by reference, we need to declare it before calling it
-//	std::vector<bool> pixelStateValues;
-//	//only now is the pixelStateValues set, and we can calculate the error
-//	printf("Calculating pixel states");
-//	calculatePixelStates(pixelStateValues, constants::picture::COLUMNS, pixelWhitenessValues);
-//	printf("Calling overload getError");
-//	return getError(pixelStateValues);
-//}
-
-int getError(){
-	take_picture();
-	std::vector<bool> pixelStateValues;
-	for (int counter = 0; counter < constants::picture::COLUMNS; counter += 1) {
-		int pixelWhiteness = get_pixel(constants::picture::ROWS / 2, counter, 3);
-		printf("Value: %i\n", pixelWhiteness);
-		if (pixelWhiteness > constants::picture::MAXIMUM_BLACK_VALUE) {
-			printf("White pixel\n");
-			pixelStateValues.push_back(true);
-		}
-		else{
-			printf("Black pixel\n");
-			pixelStateValues.push_back(false);
-		}
-		printf("Pixel value: %i\n", pixelStateValues.at(counter));
-		printf("Counter: %i\n", counter);
-	}
-	printf("Done finding white pixels\n");
-	int totalWhitePixels = 0;
-	int totalError = 0;
-	printf("Array length: %i\n", pixelStateValues.size());
-	for (int counter = 0; counter < pixelStateValues.size(); counter += 1) {
-		printf("Counter: %i\n", counter);
-		if (pixelStateValues.at(counter)) {
-			totalWhitePixels  += 1;
-			const int pixelWeight = counter - (sizeof(pixelStateValues) / 2);
-			totalError += pixelWeight;
-		}
-	}
-	if(totalError != 0){
-		totalError /= totalWhitePixels;
-	}
-	printf("Error: %i\n", totalError);
-	return  totalError;
+int getError() {
+	//as getPixelValues works on a vector object by reference, we need to declare it before calling it
+	std::vector<int> pixelWhitenessValues = getPixelValues();
+	//as pixelStateValues works on a vector object by reference, we need to declare it before calling it
+	std::vector<bool> pixelStateValues = calculatePixelStates(pixelWhitenessValues);
+	//only now is the pixelStateValues set, and we can calculate the error
+	return getError(pixelStateValues);
 }
+
+
