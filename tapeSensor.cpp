@@ -47,6 +47,25 @@ std::vector<bool> calculatePixelStates(std::vector<int> pixelValues) {
 }
 
 /**
+ * @note Determines wether the robot is on a patch of red pixels
+ * @param pixelRednessValues Pass a vector object of type int with values between 0 and 255 of the pixel redness values
+ * @return Returns true if it is evaluated that the robot is on a red patch, otherwise false
+ */
+bool isRedPatch(std::vector<int> pixelRednessValues) {
+	bool result = false;
+	int totalRedPixels = 0;
+	for (int counter = 0; counter < pixelRednessValues.size(); counter += 1) {
+		if (pixelRednessValues.at(counter) >= constants::picture::MINIMUM_RED_VALUE) {
+			totalRedPixels += 1;
+		}
+	}
+	if (totalRedPixels >= constants::picture::patch::MINIMUM_RED_PIXELS) {
+		result = true;
+	}
+	return result;
+}
+
+/**
  * @note overloaded getError. Should only be called by the getError() method with no parameters call-signature
  * @param pixelStates Pass a vector object representing if a pixel evaluated to white (true) or black (false).
  * @return Returns an signed integer value for the calculated error. A negative value shows that there are a higher

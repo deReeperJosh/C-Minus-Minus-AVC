@@ -6,6 +6,10 @@ namespace constants {
 		static const int ROWS = 240;
 		static const int COLUMNS = 320;
 		static const int MAXIMUM_BLACK_VALUE = 127;
+		static const int MINIMUM_RED_VALUE = 100;
+		namespace patch{
+			static const int MINIMUM_RED_PIXELS = COLUMNS / 2;
+		}
 	}
 	namespace vehicle {
 		namespace parts {
