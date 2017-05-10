@@ -1,4 +1,8 @@
 
+/**
+* Need's to get a previous error from a last error check
+* for the derivative.
+*/
 double getScale(int error, int previousError){
   //Proportional
   double kp = 0.5;
