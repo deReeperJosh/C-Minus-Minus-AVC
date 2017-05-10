@@ -7,6 +7,7 @@ namespace constants {
 		static const int ROWS = 240;
 		static const int COLUMNS = 320;
 		static const int MAXIMUM_BLACK_VALUE = 127;
+		static const int MINIMUM_BLACK_VALUE = 0;
 		static const int MINIMUM_RED_VALUE = 100;
 		static const int MINIMUM_GREEN_VALUE = 100;
 		static const int MINIMUM_BLUE_VALUE = 100;

@@ -107,6 +107,21 @@ bool isRedPatch(std::vector<int> pixelRednessValues) {
 }
 
 /**
+ * @note Evaluates if the sensor black every where
+ * @param pixelWhitenessValues Pass a vector object of type int of the whiteness values of the pixels
+ * @return Returns true if it is black everywhere, other wise it will return false
+ */
+bool isBlackEverywhere(std::vector<int> pixelWhitenessValues){
+	bool result = false;
+	int totalBlackPixels = totalPixelsWithinRange(constants::picture::MINIMUM_BLACK_VALUE,
+												  constants::picture::MINIMUM_BLACK_VALUE, pixelWhitenessValues);
+	if (totalBlackPixels == constants::picture::COLUMNS) {
+		result = true;
+	}
+	return result;
+}
+
+/**
  * @note overloaded getError. Should only be called by the getError() method with no parameters call-signature
  * @param pixelStates Pass a vector object representing if a pixel evaluated to white (true) or black (false).
  * @return Returns an signed integer value for the calculated error. A negative value shows that there are a higher
@@ -143,5 +158,3 @@ int getError() {
 	//Pass getError the boolean pixelStates and return the calculated result
 	return getError(pixelStateValues);
 }
-
-
