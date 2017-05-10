@@ -35,7 +35,6 @@ std::vector<bool> calculatePixelStates(std::vector<int> pixelValues) {
 	std::vector<bool> pixelStateValues;
 	//for every pixel value, calculate if it is white or not
 	for (int counter = 0; counter < pixelValues.size(); counter += 1) {
-		//printf("Counter: %i\n", counter);
 		//store the pixel whiteness value at this index in the pixelValues vector in the variable 'pixelValue'
 		int pixelValue = pixelValues.at(counter);
 		//if the pixel value is greater than the maximum specified value of black, it is therefore a white pixel
@@ -43,11 +42,10 @@ std::vector<bool> calculatePixelStates(std::vector<int> pixelValues) {
 			//add the value true to the end of the pixelValues object, signifying a white pixel
 			pixelStateValues.push_back(true);
 		}
-		//otherwise, we know it is a black pixel
+			//otherwise, we know it is a black pixel
 		else {
 			//add the value false to the end of the pixelValues object, signifying a black pixel
 			pixelStateValues.push_back(false);
-			//printf("Pixel evaluated to false\n");
 		}
 	}
 	return pixelStateValues;
