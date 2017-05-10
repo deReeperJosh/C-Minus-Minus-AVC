@@ -3,6 +3,7 @@
 
 namespace constants {
 	namespace picture {
+		static const int MAXIMUM_POSSIBLE_PIXEL_VALUE = 255;
 		static const int ROWS = 240;
 		static const int COLUMNS = 320;
 		static const int MAXIMUM_BLACK_VALUE = 127;
