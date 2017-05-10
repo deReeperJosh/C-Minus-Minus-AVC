@@ -64,6 +64,11 @@ int totalPixelsWithinRange(const int minimumValue, const int maximumValue, std::
 	return totalPixelsWithinRange;
 }
 
+/**
+ * @note Averages the values of the pixels in a vector of integers
+ * @param pixelValues Pass a vector object of type int
+ * @return Returns the average of all the values in the argument pixelValues
+ */
 int averagePixelValues(std::vector<int> pixelValues) {
 	int totalValues = 0;
 	for (int counter = 0; counter < pixelValues.size(); counter += 1) {
