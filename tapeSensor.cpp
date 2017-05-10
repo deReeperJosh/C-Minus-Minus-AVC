@@ -65,7 +65,7 @@ int getError(std::vector<bool> pixelStates) {
 			totalError += pixelWeight;
 		}
 	}
-	totalError != 0 ? totalError /= totalWhitePixels : null;
+	totalError != 0 ? totalError /= totalWhitePixels : totalError = totalError;
 	return totalError;
 }
 
@@ -90,30 +90,36 @@ int getError(std::vector<bool> pixelStates) {
 
 int getError(){
 	take_picture();
-	int pixelStateValues[constants::picture::COLUMNS];
+	std::vector<bool> pixelStateValues;
 	for (int counter = 0; counter < constants::picture::COLUMNS; counter += 1) {
-		int pixelWhiteness = get_pixel(constants::picture::ROWS, counter, 3);
+		int pixelWhiteness = get_pixel(constants::picture::ROWS / 2, counter, 3);
+		printf("Value: %i\n", pixelWhiteness);
 		if (pixelWhiteness > constants::picture::MAXIMUM_BLACK_VALUE) {
-			printf("White pixel");
-			pixelStateValues[counter] = 1;
+			printf("White pixel\n");
+			pixelStateValues.push_back(true);
 		}
 		else{
-			printf("Black pixel");
-			pixelStateValues[counter] = 0;
+			printf("Black pixel\n");
+			pixelStateValues.push_back(false);
 		}
+		printf("Pixel value: %i\n", pixelStateValues.at(counter));
+		printf("Counter: %i\n", counter);
 	}
-	printf("Done finding white pixels");
+	printf("Done finding white pixels\n");
 	int totalWhitePixels = 0;
 	int totalError = 0;
-	for (int counter = 0; counter < sizeof(pixelStateValues); counter += 1) {
-		if (pixelStateValues[counter] == 1) {
+	printf("Array length: %i\n", pixelStateValues.size());
+	for (int counter = 0; counter < pixelStateValues.size(); counter += 1) {
+		printf("Counter: %i\n", counter);
+		if (pixelStateValues.at(counter)) {
 			totalWhitePixels  += 1;
-			const int pixelWeight = counter - (pixelStates.size() / 2);
+			const int pixelWeight = counter - (sizeof(pixelStateValues) / 2);
 			totalError += pixelWeight;
 		}
 	}
 	if(totalError != 0){
 		totalError /= totalWhitePixels;
 	}
+	printf("Error: %i\n", totalError);
 	return  totalError;
 }

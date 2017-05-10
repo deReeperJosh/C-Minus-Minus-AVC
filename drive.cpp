@@ -39,8 +39,6 @@ void lineDrive(const int error) {
  */
 void drive() {
 	const int error = getError();
-	std::cout << "error: ";
-	std::cout << error;
-	std::cout << "Driving";
-	lineDrive(error);
+	printf("Error: %i\n", error);
+	//drive(error);
 }
