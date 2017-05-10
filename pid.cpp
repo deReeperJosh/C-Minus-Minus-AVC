@@ -12,7 +12,7 @@ double getScale(int error, int previousError){
   double kd = 5.0;
   int previousError = 0;
   int currentError = 0;
-  Sleep(0, 100000);
+  sleep1(0, 100000);
   double derivativeSignal = (currentError - previousError/0.1)*kd;
   
   int finalSignal = proportionalSignal + derivativeSignal;
