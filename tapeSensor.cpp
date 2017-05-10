@@ -3,15 +3,14 @@
 using namespace std;
 
 /**
- * @note Fills the argument pixelValues with the whiteness values for the middle row of a taken picture
- * @param pixelValues Pass an vector object, the function works on this parameter by reference.
- * @param size Pass the absolute size that the vector should be.
+ * @note Takes a picture and finds and returns the whiteness values of each of the pixels in the centre row
+ * @return A vector object of type int containing the pixel whiteness values (between 0 and 255) of the middle row
  * */
 std::vector<int> getPixelValues() {
 	//take a picture of the surface
 	take_picture();
 	std::vector<int> pixelValues;
-	//fill the pixelValues vector object to the given size using the middle
+	//fill the pixelValues vector object to the given size using the amount of columns
 	for (int counter = 0; counter < constants::picture::COLUMNS; counter += 1) {
 		//calculates the whiteness value of a pixel by taking a pixel halfway down the image at index counter
 		int pixelValue = get_pixel((constants::picture::ROWS / 2), counter, 3);
@@ -22,13 +21,9 @@ std::vector<int> getPixelValues() {
 }
 
 /**
- * @note Fills the argument pixelStatesValues with true or false according to wether the corresponding pixelValue
- * evaluates to white or black
- * @param pixelStates Pass a vector object of type boolean; it will be worked on by reference. The function fills with
- * true if the value in pixelValues with the corresponding index evaluates to white, otherwise the function fills with
- * false.
- * @param size Pass the absolute size that the pixelStates vector should be.
+ * @note Calculates wether a pixel is white or black and returns them in a vector object of type boolean
  * @param pixelValues Pass a vector object of pixelValues between 0 and 255.
+ * @return An array of booleans where true correlates to a white pixel and false to a black pixel
  */
 std::vector<bool> calculatePixelStates(std::vector<int> pixelValues) {
 	printf("Defined pixel states\n");
@@ -65,7 +60,7 @@ int getError(std::vector<bool> pixelStates) {
 	//calculate the total error of the white code
 	for (int counter = 0; counter < pixelStates.size(); counter += 1) {
 		if (pixelStates.at(counter)) {
-			totalWhitePixels++;
+			totalWhitePixels += 1;
 			const int pixelWeight = counter - (pixelStates.size() / 2);
 			totalError += pixelWeight;
 		}
@@ -80,11 +75,9 @@ int getError(std::vector<bool> pixelStates) {
  * to the right.
  */
 int getError() {
-	//as getPixelValues works on a vector object by reference, we need to declare it before calling it
 	std::vector<int> pixelWhitenessValues = getPixelValues();
-	//as pixelStateValues works on a vector object by reference, we need to declare it before calling it
 	std::vector<bool> pixelStateValues = calculatePixelStates(pixelWhitenessValues);
-	//only now is the pixelStateValues set, and we can calculate the error
+	//Pass getError the boolean pixelStates and return the calculated result
 	return getError(pixelStateValues);
 }
 
