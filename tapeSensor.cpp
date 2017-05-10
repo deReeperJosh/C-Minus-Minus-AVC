@@ -28,7 +28,7 @@ std::vector<int> getPixelValues( &pixelValues, const int COLUMNS) {
  * @param size Pass the absolute size that the pixelStates vector should be.
  * @param pixelValues Pass a vector object of pixelValues between 0 and 255.
  */
-std::vector<bool> calculatePixelStates(const int size, std::vector<int> pixelValues) {
+std::vector<bool> calculatePixelStates(std::vector<int> pixelValues) {
 	std::vector<bool> pixelStateValues;
 	//for every pixel value, calculate if it is white or not
 	for (int counter = 0; counter < pixelValues.size(); counter += 1) {
