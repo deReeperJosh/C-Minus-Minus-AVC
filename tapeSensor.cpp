@@ -107,7 +107,8 @@ bool isRedPatch(std::vector<int> pixelRednessValues) {
 }
 
 /**
- * @note Evaluates if the sensor black every where
+ * @brief Evaluates if the sensor black every where
+ * @note Unfinished, untested, unadjusted
  * @param pixelWhitenessValues Pass a vector object of type int of the whiteness values of the pixels
  * @return Returns true if it is black everywhere, other wise it will return false
  */
@@ -116,6 +117,22 @@ bool isBlackEverywhere(std::vector<int> pixelWhitenessValues){
 	int totalBlackPixels = totalPixelsWithinRange(constants::picture::MINIMUM_BLACK_VALUE,
 												  constants::picture::MINIMUM_BLACK_VALUE, pixelWhitenessValues);
 	if (totalBlackPixels == constants::picture::COLUMNS) {
+		result = true;
+	}
+	return result;
+}
+
+/**
+ * @brief Evaluates if the sensor is at an intersection
+ * @note Unfinished, untested, unadjusted
+ * @param pixelWhitenessValues Pass a vector object of type int of the whiteness values of the pixels
+ * @return Returns true if the robot is at an intersection, otherwise it will return false
+ */
+bool isAtIntersection(std::vector<int> pixelWhitenessValues){
+	result = false;
+	int totalWhitePixels = totalWhitePixels(constants::picture::MAXIMUM_BLACK_VALUE + 1,
+											constants::picture::MAXIMUM_POSSIBLE_PIXEL_VALUE, pixelWhitenessValues);
+	if (totalWhitePixels == constants::picture::COLUMNS) {
 		result = true;
 	}
 	return result;
