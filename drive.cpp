@@ -8,8 +8,8 @@ int previousError = 0;
 
 void lineDrive(const int error) {
 	if (isRedPatch()) {
-		stop();
 		printf("Found a red patch");
+		stopDriving();
 	}
 	double scaledSpeed = (double) error * getScale(error, previousError);
 	previousError = getScale(error, previousError);
