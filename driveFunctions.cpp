@@ -14,15 +14,15 @@ void driveBackward(int speed) {
 }
 
 void turnRight(int speed) {
-	set_motor(constants::vehicle::parts::RIGHT_MOTOR, -constants::vehicle::STABLE_SPEED);
-	set_motor(constants::vehicle::parts::LEFT_MOTOR, (-constants::vehicle::STABLE_SPEED) -speed);
+	set_motor(constants::vehicle::parts::RIGHT_MOTOR, constants::vehicle::STABLE_SPEED);
+	set_motor(constants::vehicle::parts::LEFT_MOTOR, (constants::vehicle::STABLE_SPEED) + speed);
 	driveSleep();
 	stopDriving();
 }
 
 void turnLeft(int speed) {
-	set_motor(constants::vehicle::parts::RIGHT_MOTOR, (-constants::vehicle::STABLE_SPEED)-speed);
-	set_motor(constants::vehicle::parts::LEFT_MOTOR, -constants::vehicle::STABLE_SPEED);
+	set_motor(constants::vehicle::parts::RIGHT_MOTOR, (constants::vehicle::STABLE_SPEED) + speed);
+	set_motor(constants::vehicle::parts::LEFT_MOTOR, constants::vehicle::STABLE_SPEED);
 	driveSleep();
 	stopDriving();
 }
