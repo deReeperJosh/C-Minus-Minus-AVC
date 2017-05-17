@@ -6,6 +6,7 @@
 #include "config.h"
 #include "tapeSensor.h"
 #include "pid.h"
+#include "serverCommunication.h"
 
 void drive();
 

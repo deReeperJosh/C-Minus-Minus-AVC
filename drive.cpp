@@ -20,6 +20,7 @@ void lineDrive(const int error) {
  * @note Starts the robots drive routine
  */
 void drive() {
+	openGate();
 	for(int counter = 0; counter < 99999; counter += 1) {
 		const int error = getError();
 		printf("Error: %i\n", error);
