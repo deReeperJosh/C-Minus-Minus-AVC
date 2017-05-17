@@ -9,4 +9,6 @@
 
 int getError();
 
+bool isRedPatch();
+
 #endif //C_MINUS_MINUS_AVC_TAPESENSOR_H
