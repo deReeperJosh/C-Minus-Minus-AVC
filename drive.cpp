@@ -9,12 +9,12 @@ void lineDrive(const int error) {
 	int leftMotorSpeed;
 	int rightMotorSpeed;
 	if (scaledSpeed > 0) {
-		std::cout << "Scale speed > 0";
+		std::cout << "Scale speed > 0\n";
 		leftMotorSpeed = (int) scaledSpeed;
 		rightMotorSpeed = constants::vehicle::STABLE_SPEED;
 	}
 	else if (scaledSpeed < 0) {
-		std::cout << "Scale speed < 0";
+		std::cout << "Scale speed < 0\n";
 		leftMotorSpeed = constants::vehicle::STABLE_SPEED;
 		rightMotorSpeed = (int) scaledSpeed;
 	}
@@ -22,16 +22,16 @@ void lineDrive(const int error) {
 		leftMotorSpeed = constants::vehicle::STABLE_SPEED;
 		rightMotorSpeed = constants::vehicle::STABLE_SPEED;
 	}
-	std::cout << "Setting left motor speed";
+	std::cout << "Setting left motor speed\n";
 	set_motor(constants::vehicle::parts::LEFT_MOTOR, leftMotorSpeed);
-	std::cout << "Setting right motor speed";
+	std::cout << "Setting right motor speed\n";
 	set_motor(constants::vehicle::parts::RIGHT_MOTOR, rightMotorSpeed);
-	std::cout << "Sleeping";
+	std::cout << "Sleeping\n";
 	sleep1(constants::vehicle::SLEEP_TIME_SECONDS, constants::vehicle::SLEEP_TIME_MICROSECONDS);
-	std::cout << "Stopping motors";
+	std::cout << "Stopping motors\n";
 	set_motor(constants::vehicle::parts::LEFT_MOTOR, 0);
 	set_motor(constants::vehicle::parts::RIGHT_MOTOR, 0);
-	std::cout << "Sleeping";
+	std::cout << "Sleeping\n";
 }
 
 /**
@@ -42,6 +42,6 @@ void drive() {
 		const int error = getError();
 		printf("Is red patch: %i\n", isRedPatch());
 		printf("Error: %i\n", error);
-		drive(error);
+//		lineDrive(error);
 	}
 }

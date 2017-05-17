@@ -56,7 +56,7 @@ std::vector<bool> calculatePixelStates(std::vector<int> pixelValues) {
 int totalPixelsWithinRange(const int minimumValue, const int maximumValue, std::vector<int> pixelValues) {
 	int totalPixelsWithinRange = 0;
 	for (int counter = 0; counter < pixelValues.size(); counter += 1) {
-		currentValue = pixelValues.at(counter);
+		int currentValue = pixelValues.at(counter);
 		if (currentValue <= minimumValue && currentValue >= maximumValue) {
 			totalPixelsWithinRange += 1;
 		}
@@ -83,10 +83,12 @@ int averagePixelValues(std::vector<int> pixelValues) {
  * @return Returns true if it is evaluated that the robot is on a red redPatch, otherwise false
  */
 bool isRedPatch() {
+	printf("Calculating red patch\n");
 	bool result = false;
 	std::vector<int> pixelRednessValues = getPixelValues(constants::picture::identifiers::RED);
 	int totalRedPixels = totalPixelsWithinRange(constants::picture::redPatch::MINIMUM_RED_PIXELS,
 												constants::picture::MAXIMUM_POSSIBLE_PIXEL_VALUE, pixelRednessValues);
+	printf("total red pixels: %i\n", totalRedPixels);
 	//If the total amount of red pixels meets the requirements, the ratio of red values to green values can then be
 	//	calculated. A number of red pixels is used as it is a good way to think about the problem knowing that there's
 	//	black either side
@@ -96,7 +98,7 @@ bool isRedPatch() {
 		std::vector<int> pixelBluenessValues = getPixelValues(2);
 		int averageNonRedValues =
 			(averagePixelValues(pixelGreenessValues) + averagePixelValues(pixelBluenessValues)) / 2;
-		int averageRedValues = averageRedValues(pixelRednessValues);
+		int averageRedValues = averagePixelValues(pixelRednessValues);
 		double ratioOfAverageRedValuesToNonRedValues = (double) averageNonRedValues / (double) averageNonRedValues;
 		if(ratioOfAverageRedValuesToNonRedValues >= constants::picture::redPatch::MINIMUM_RATIO_VALUE){
 			result = true;
