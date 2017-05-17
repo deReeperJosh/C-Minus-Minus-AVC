@@ -5,6 +5,7 @@
 #include "E101.h"
 #include "config.h"
 #include "tapeSensor.h"
+#include "pid.h"
 
 void drive();
 

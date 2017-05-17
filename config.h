@@ -3,9 +3,24 @@
 
 namespace constants {
 	namespace picture {
+		namespace identifiers{
+			static const int RED = 0;
+			static const int GREEN = 1;
+			static const int BLUE = 2;
+			static const int WHITE = 3;
+		}
+		static const int MAXIMUM_POSSIBLE_PIXEL_VALUE = 255;
 		static const int ROWS = 240;
 		static const int COLUMNS = 320;
 		static const int MAXIMUM_BLACK_VALUE = 127;
+		static const int MINIMUM_BLACK_VALUE = 0;
+		static const int MINIMUM_RED_VALUE = 100;
+		static const int MINIMUM_GREEN_VALUE = 100;
+		static const int MINIMUM_BLUE_VALUE = 100;
+		namespace redPatch{
+			static const int MINIMUM_RED_PIXELS = COLUMNS / 2;
+			static const double MINIMUM_RATIO_VALUE = 2.5;
+		}
 	}
 	namespace vehicle {
 		namespace parts {
