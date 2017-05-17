@@ -16,4 +16,6 @@ void stopDriving();
 
 void driveSleep();
 
+void turn(int speed);
+
 #endif //C_MINUS_MINUS_AVC_DRIVEFUNCTIONS_H
