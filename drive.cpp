@@ -11,9 +11,9 @@ void lineDrive(const int error) {
 		printf("Found a red patch");
 		stopDriving();
 	}
-	double scaledSpeed = (double) error * getScale(error, previousError);
-	previousError = getScale(error, previousError);
-	turn(Math.min(254 - constants::vehicle::STABLE_SPEED, (constants::vehicle::STABLE_SPEED + (int) scaledSpeed)));
+	//double scaledSpeed = (double) error * getScale(error, previousError);
+	//previousError = getScale(error, previousError);
+	//turn(Math.min(254 - constants::vehicle::STABLE_SPEED, (constants::vehicle::STABLE_SPEED + (int) scaledSpeed)));
 }
 
 /**
