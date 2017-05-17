@@ -3,8 +3,8 @@
 #include "driveFunctions.h"
 
 void driveForward(int speed) { //takes a speed between the values -254 and 254
-	set_motor(constants::vehicle::parts::RIGHT_MOTOR, (-constants::vehicle::STABLE_SPEED) - speed);
-	set_motor(constants::vehicle::parts::LEFT_MOTOR, (-constants::vehicle::STABLE_SPEED) - speed);
+	set_motor(constants::vehicle::parts::RIGHT_MOTOR, (constants::vehicle::STABLE_SPEED) + speed);
+	set_motor(constants::vehicle::parts::LEFT_MOTOR, (constants::vehicle::STABLE_SPEED) + speed);
 	driveSleep();
 	stopDriving();
 }
