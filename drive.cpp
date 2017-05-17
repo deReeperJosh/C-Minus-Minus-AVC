@@ -7,10 +7,6 @@
 int previousError = 0;
 
 void lineDrive(const int error, const int previousError, const int totalErrorExperienced) {
-	if (isRedPatch()) {
-		printf("Found a red patch\n");
-		stopDriving();
-	}
 	//TODO: test to confirm setting the speed directly to the PID signal works as expected. It seemed to be earlier.
 	int scaledSpeed = getPIDSignal(error, previousError, totalErrorExperienced);
 	//certify that the scaled speed isn't negative
