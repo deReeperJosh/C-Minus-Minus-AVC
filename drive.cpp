@@ -21,7 +21,10 @@ void lineDrive(const int error) {
  */
 void drive() {
 	openGate();
-	for(int counter = 0; counter < 99999; counter += 1) {
+	//A red patch signifies the end of the line driving. Using the isRedPatch method before the getError method is a
+	// slight hack as a picture isn't taken for the red patch to evaluate. It still works as all values in the picture
+	// are initialised to 0, and the ratio of red pixels to non red pixels stays low.
+	while(isRedPatch()) {
 		const int error = getError();
 		printf("Error: %i\n", error);
 		lineDrive(error);
