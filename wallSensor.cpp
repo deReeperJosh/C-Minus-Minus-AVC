@@ -9,6 +9,8 @@ void getErrorWalls(){
   //ir 2 - straight
   //ir 3 - right
   
+  //Get values here for IR cameras
+  
   //Going above threshold means detecting walls
   if(ir1 < threshold){
     turnLeft();
