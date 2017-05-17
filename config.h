@@ -1,6 +1,5 @@
 #ifndef C_MINUS_MINUS_AVC_CONFIG_H
 #define C_MINUS_MINUS_AVC_CONFIG_H
-
 namespace constants {
 	namespace picture {
 		static const int ROWS = 240;
@@ -19,7 +18,13 @@ namespace constants {
 	namespace PID {
 		static const int PROPORTIONAL_SCALE = 2;
 	}
-
+	namespace server {
+		static const int TOTAL_MESSAGE_CHARACTERS = 24;
+		static const char IP_ADDRESS[15] = {'1', '3', '0', '.', '1', '9', '5', '.', '6', '.', '1', '9', '6'};
+		static const int PORT = 1024;
+		//the message must be the length that send_to_server expects
+		static const string MESSAGE[TOTAL_MESSAGE_CHARACTERS] = {'p', 'l', 'e', 'a', 's', 'e', 0};
+		static const int TOTAL_PASSKEY_CHARACTERS = 6;
+	}
 }
-
 #endif //C_MINUS_MINUS_AVC_CONFIG_H

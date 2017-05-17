@@ -38,9 +38,10 @@ void lineDrive(const int error) {
  * @note Starts the robots drive routine
  */
 void drive() {
-	while (true) {
-		const int error = getError();
-		printf("Error: %i\n", error);
-		drive(error);
-	}
+	openGate();
+//	while (true) {
+//		const int error = getError();
+//		printf("Error: %i\n", error);
+//		drive(error);
+//	}
 }
