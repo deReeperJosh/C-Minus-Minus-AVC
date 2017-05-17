@@ -27,17 +27,6 @@ void turnLeft(int speed) {
 	stopDriving();
 }
 
-void turn(int speed) {
-	if (speed < 0) {
-		printf("turning right\n");
-		turnRight(speed);
-	}
-	else {
-		printf("turning left\n");
-		turnLeft(-speed);
-	}
-}
-
 void stopDriving() {
 	set_motor(constants::vehicle::parts::RIGHT_MOTOR, 0);
 	set_motor(constants::vehicle::parts::LEFT_MOTOR, 0);
