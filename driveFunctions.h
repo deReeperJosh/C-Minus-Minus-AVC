@@ -2,15 +2,16 @@
 #define C_MINUS_MINUS_AVC_DRIVEFUNCTIONS_H
 #include "E101.h"
 #include "config.h"
+#include "stdio.h"
 
 //functions in cpp file
-void driveForward(double time, int speed);
+void driveForward(int speed);
 
-void driveBackward(double time, int speed);
+void driveBackward(int speed);
 
-void turnLeft(double time, int speed);
+void turnLeft(int speed);
 
-void turnRight(double time, int speed);
+void turnRight(int speed);
 
 void stopDriving();
 
