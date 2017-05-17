@@ -14,7 +14,7 @@ void lineDrive(const int error, const int previousError, const int totalErrorExp
 	if (isBlackEverywhere()) {
 		driveBackward(constants::vehicle::STABLE_SPEED);
 	}
-	else if(error < 10 && error > -10){
+	else if(error == 0){
 		printf("Should be going forwards\n");
 		driveForward(constants::vehicle::STABLE_SPEED);
 	}
