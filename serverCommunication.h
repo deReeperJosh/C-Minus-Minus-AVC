@@ -2,7 +2,7 @@
 #define C_MINUS_MINUS_AVC_SERVERCOMMUNICATION_H
 #include "E101.h"
 #include "config.h"
-#include "iostream"
+#include "stdio.h"
 
 void openGate();
 

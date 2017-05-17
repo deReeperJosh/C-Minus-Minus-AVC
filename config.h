@@ -20,10 +20,10 @@ namespace constants {
 	}
 	namespace server {
 		static const int TOTAL_MESSAGE_CHARACTERS = 24;
-		static const char IP_ADDRESS[15] = {'1', '3', '0', '.', '1', '9', '5', '.', '6', '.', '1', '9', '6'};
+		static char IP_ADDRESS[15] = {'1', '3', '0', '.', '1', '9', '5', '.', '6', '.', '1', '9', '6'};
 		static const int PORT = 1024;
 		//the message must be the length that send_to_server expects
-		static const string MESSAGE[TOTAL_MESSAGE_CHARACTERS] = {'p', 'l', 'e', 'a', 's', 'e', 0};
+		static char MESSAGE[TOTAL_MESSAGE_CHARACTERS] = {'P', 'l', 'e', 'a', 's', 'e', 0};
 		static const int TOTAL_PASSKEY_CHARACTERS = 6;
 	}
 }
