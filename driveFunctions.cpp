@@ -14,7 +14,7 @@ void driveBackward(int speed) {
 }
 
 void turnRight(int speed) {
-	set_motor(constants::vehicle::parts::RIGHT_MOTOR, constants::vehicle::STABLE_SPEED);
+	set_motor(constants::vehicle::parts::RIGHT_MOTOR, 0);
 	set_motor(constants::vehicle::parts::LEFT_MOTOR, -speed);
 	driveSleep();
 	stopDriving();
@@ -22,13 +22,13 @@ void turnRight(int speed) {
 
 void turnLeft(int speed) {
 	set_motor(constants::vehicle::parts::RIGHT_MOTOR, speed);
-	set_motor(constants::vehicle::parts::LEFT_MOTOR, -constants::vehicle::STABLE_SPEED);
+	set_motor(constants::vehicle::parts::LEFT_MOTOR, 0);
 	driveSleep();
 	stopDriving();
 }
 
 void turn(int speed) {
-	if (speed > 0) {
+	if (speed < 0) {
 		turnRight(speed);
 	}
 	else {
