@@ -82,10 +82,9 @@ int averagePixelValues(std::vector<int> pixelValues) {
  * @param pixelRednessValues Pass a vector object of type int with values between 0 and 255 of the pixel redness values
  * @return Returns true if it is evaluated that the robot is on a red redPatch, otherwise false
  */
-bool isRedPatch(std::vector<int> pixelRednessValues) {
+bool isRedPatch() {
 	bool result = false;
-	//Pass a value 1 to signify that the getPixelValues method should find the red values for the pixels
-	std::vector<int> pixelRednessValues = getPixelValues(0);
+	std::vector<int> pixelRednessValues = getPixelValues(constants::picture::identifiers::RED);
 	int totalRedPixels = totalPixelsWithinRange(constants::picture::redPatch::MINIMUM_RED_PIXELS,
 												constants::picture::MAXIMUM_POSSIBLE_PIXEL_VALUE, pixelRednessValues);
 	//If the total amount of red pixels meets the requirements, the ratio of red values to green values can then be

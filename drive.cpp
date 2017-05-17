@@ -40,6 +40,7 @@ void lineDrive(const int error) {
 void drive() {
 	while (true) {
 		const int error = getError();
+		printf("Is red patch: %i", isRedPatch());
 		printf("Error: %i\n", error);
 		drive(error);
 	}
