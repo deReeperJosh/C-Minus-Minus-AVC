@@ -23,8 +23,8 @@ namespace constants {
 	}
 	namespace vehicle {
 		namespace parts {
-			static const int LEFT_MOTOR = 1;
-			static const int RIGHT_MOTOR = 2;
+			static const int LEFT_MOTOR = 2;
+			static const int RIGHT_MOTOR = 1;
 		}
 		static const int STABLE_SPEED = 100;
 		static const int MAX_SPEED = 254;
