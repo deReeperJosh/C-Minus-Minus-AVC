@@ -8,19 +8,16 @@ int previousError = 0;
 
 void lineDrive(const int error, const int previousError, const int totalErrorExperienced) {
 	if (isRedPatch()) {
-		printf("Found a red patch");
+		printf("Found a red patch\n");
 		stopDriving();
 	}
 	//TODO: test to confirm setting the speed directly to the PID signal works as expected. It seemed to be earlier.
-	double scaledSpeed = getPIDSignal(error, previousError, totalErrorExperienced);
-	scaledSpeed > constants::vehicle::MAX_SPEED ? scaledSpeed = constants::vehicle::MAX_SPEED
-												: scaledSpeed = scaledSpeed;
-	if (error < 0) {
-		turnRight(scaledSpeed);
-	}
-	else {
-		turnLeft(scaledSpeed);
-	}
+	int scaledSpeed = getPIDSignal(error, previousError, totalErrorExperienced);
+	//certify that the scaled speed isn't negative
+	if (scaledSpeed < 0) scaledSpeed *= -1;
+	//certify that the scaled speed isn't higher than the maximum possible speed
+	if (scaledSpeed > constants::vehicle::MAX_SPEED) scaledSpeed = constants::vehicle::MAX_SPEED;
+	error < 0 ? turnRight(scaledSpeed) : turnLeft(scaledSpeed);
 }
 
 /**

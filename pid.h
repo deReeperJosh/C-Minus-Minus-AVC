@@ -5,6 +5,6 @@
 #include "E101.h"
 #include "config.h"
 
-double getPIDSignal(const int error, const int previousError, const int totalErrorExperienced);
+int getPIDSignal(const int error, const int previousError, const int totalErrorExperienced);
 
 #endif //C_MINUS_MINUS_AVC_PID_H

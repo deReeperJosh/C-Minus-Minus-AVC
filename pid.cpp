@@ -15,8 +15,8 @@ double calculateIntegralSignal(const int totalErrorExperienced) {
 	return integralSignal;
 }
 
-double getPIDSignal(const int error, const int previousError, const int totalErrorExperienced) {
+int getPIDSignal(const int error, const int previousError, const int totalErrorExperienced) {
 	double finalSignal = calculateProportionalSignal(error) + calculateDerivativeSignal(error, previousError)
 						 + calculateIntegralSignal(totalErrorExperienced);
-	return finalSignal;
+	return (int) finalSignal;
 }
