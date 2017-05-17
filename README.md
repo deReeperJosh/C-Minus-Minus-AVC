@@ -17,7 +17,7 @@ Just a quick checklist of code base tasks and when they have been completed. Thi
 - [ ] **[Date: ]** Senses timed gate
 - [ ] **[Date: ]** Drives straight passage
 - [ ] **[Date: ]** Drives curved passage
-- [ ] **[Date: ]** Drives righ-angle passage
+- [ ] **[Date: ]** Drives right-angle passage
 ### Vehicle motion:
 - [x] **[Date: 11/05/2017]** Drives forwards
 - [x] **[Date: 11/05/2017]** Drives backwards
