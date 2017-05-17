@@ -84,8 +84,11 @@ int averagePixelValues(std::vector<int> pixelValues) {
  */
 bool isRedPatch() {
 	printf("Calculating red patch\n");
+	take_picture();
+	printf("took picture");
 	bool result = false;
 	std::vector<int> pixelRednessValues = getPixelValues(constants::picture::identifiers::RED);
+	printf("found redness values");
 	int totalRedPixels = totalPixelsWithinRange(constants::picture::redPatch::MINIMUM_RED_PIXELS,
 												constants::picture::MAXIMUM_POSSIBLE_PIXEL_VALUE, pixelRednessValues);
 	printf("total red pixels: %i\n", totalRedPixels);
@@ -96,10 +99,14 @@ bool isRedPatch() {
 		//It is unnecessary to find the greeness and blueness levels outside of this scope
 		std::vector<int> pixelGreenessValues = getPixelValues(1);
 		std::vector<int> pixelBluenessValues = getPixelValues(2);
+		printf("found green and blue values");
 		int averageNonRedValues =
 			(averagePixelValues(pixelGreenessValues) + averagePixelValues(pixelBluenessValues)) / 2;
+		printf("average non red values: %i\n", averageNonRedValues);
 		int averageRedValues = averagePixelValues(pixelRednessValues);
+		printf("average red values: %i\n", averageRedValues);
 		double ratioOfAverageRedValuesToNonRedValues = (double) averageNonRedValues / (double) averageNonRedValues;
+		printf("ratio: %i\n", ratioOfAverageRedValuesToNonRedValues);
 		if(ratioOfAverageRedValuesToNonRedValues >= constants::picture::redPatch::MINIMUM_RATIO_VALUE){
 			result = true;
 		}
