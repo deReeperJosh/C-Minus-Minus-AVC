@@ -14,8 +14,7 @@ void lineDrive(const int error, const int previousError, const int totalErrorExp
 	//certify that the scaled speed isn't higher than the maximum possible speed
 	if (scaledSpeed > constants::vehicle::MAX_SPEED) scaledSpeed = constants::vehicle::MAX_SPEED;
 	if(error < 10 && error > -10){
-		printf("Should be going forwards\n");
-		driveForward(constants::vehicle::STABLE_SPEED);
+		driveForward(scaledSpeed);
 	}
 	else if(error < -10){
 		turnRight(scaledSpeed);
