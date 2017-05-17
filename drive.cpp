@@ -39,9 +39,9 @@ void lineDrive(const int error) {
  */
 void drive() {
 	while (true) {
-		const int error = getError();
+		//const int error = getError();
 		printf("Is red patch: %i\n", isRedPatch());
-		printf("Error: %i\n", error);
+		//printf("Error: %i\n", error);
 		drive(error);
 	}
 }
