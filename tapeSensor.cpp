@@ -25,7 +25,6 @@ std::vector<int> getPixelValues(int whichColor) {
  * @return An array of booleans where true correlates to a white pixel and false to a black pixel
  */
 std::vector<bool> calculatePixelStates(std::vector<int> pixelValues) {
-	printf("Defined pixel states\n");
 	std::vector<bool> pixelStateValues;
 	//for every pixel value, calculate if it is white or not
 	for (int counter = 0; counter < pixelValues.size(); counter += 1) {
@@ -83,14 +82,10 @@ int averagePixelValues(std::vector<int> pixelValues) {
  * @return Returns true if it is evaluated that the robot is on a red redPatch, otherwise false
  */
 bool isRedPatch() {
-	//TODO: remove this statement, it's for testing
-	take_picture();
 	bool result = false;
 	std::vector<int> pixelRednessValues = getPixelValues(constants::picture::identifiers::RED);
-	printf("found redness values\n");
 	int totalRedPixels = totalPixelsWithinRange(constants::picture::redPatch::MINIMUM_RED_PIXELS,
 												constants::picture::MAXIMUM_POSSIBLE_PIXEL_VALUE, pixelRednessValues);
-	printf("total red pixels: %i\n", totalRedPixels);
 	//If the total amount of red pixels meets the requirements, the ratio of red values to green values can then be
 	//	calculated. A number of red pixels is used as it is a good way to think about the problem knowing that there's
 	//	black either side
@@ -98,14 +93,10 @@ bool isRedPatch() {
 		//It is unnecessary to find the greeness and blueness levels outside of this scope
 		std::vector<int> pixelGreenessValues = getPixelValues(1);
 		std::vector<int> pixelBluenessValues = getPixelValues(2);
-		printf("found green and blue values\n");
 		int averageNonRedValues =
 			(averagePixelValues(pixelGreenessValues) + averagePixelValues(pixelBluenessValues)) / 2;
-		printf("average non red values: %i\n", averageNonRedValues);
 		int averageRedValues = averagePixelValues(pixelRednessValues);
-		printf("average red values: %i\n", averageRedValues);
 		double ratioOfAverageRedValuesToNonRedValues = (double) averageRedValues / (double) averageNonRedValues;
-		printf("ratio: %f\n", ratioOfAverageRedValuesToNonRedValues);
 		if(ratioOfAverageRedValuesToNonRedValues >= constants::picture::redPatch::MINIMUM_RATIO_VALUE){
 			result = true;
 		}

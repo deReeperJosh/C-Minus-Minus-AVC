@@ -5,6 +5,10 @@
  * @param error Pass a signed int for the error value
  */
 void lineDrive(const int error) {
+	if(isRedPatch()){
+		stop();
+		printf("Found a red patch");
+	}
 	double scaledSpeed = (double) error * constants::PID::PROPORTIONAL_SCALE;
 	int leftMotorSpeed;
 	int rightMotorSpeed;
@@ -39,9 +43,8 @@ void lineDrive(const int error) {
  */
 void drive() {
 	while (true) {
-		//const int error = getError();
-		printf("Is red patch: %i\n", isRedPatch());
-		//printf("Error: %i\n", error);
-		//lineDrive(error);
+		const int error = getError();
+		printf("Error: %i\n", error);
+		lineDrive(error);
 	}
 }
