@@ -109,7 +109,8 @@ bool isRedPatch() {
  * @param pixelWhitenessValues Pass a vector object of type int of the whiteness values of the pixels
  * @return Returns true if it is black everywhere, other wise it will return false
  */
-bool isBlackEverywhere(std::vector<int> pixelWhitenessValues){
+bool isBlackEverywhere(){
+	std::vector<int> pixelWhitenessValues = getPixelValues(3);
 	bool result = false;
 	int totalBlackPixels = totalPixelsWithinRange(constants::picture::MINIMUM_BLACK_VALUE,
 												  constants::picture::MINIMUM_BLACK_VALUE, pixelWhitenessValues);
