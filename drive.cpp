@@ -11,8 +11,6 @@ void lineDrive(const int error, const int previousError, const int totalErrorExp
 	int scaledSpeed = getPIDSignal(error, previousError, totalErrorExperienced);
 	//certify that the scaled speed isn't negative
 	if (scaledSpeed < 0) scaledSpeed *= -1;
-	//certify that the scaled speed isn't higher than the maximum possible speed
-	if (scaledSpeed > constants::vehicle::MAX_SPEED) scaledSpeed = constants::vehicle::MAX_SPEED;
 	if (isBlackEverywhere()) {
 		driveBackward(constants::vehicle::STABLE_SPEED);
 	}
