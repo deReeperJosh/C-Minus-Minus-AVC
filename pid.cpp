@@ -18,5 +18,6 @@ double calculateIntegralSignal(const int totalErrorExperienced) {
 int getPIDSignal(const int error, const int previousError, const int totalErrorExperienced) {
 	double finalSignal = calculateProportionalSignal(error) + calculateDerivativeSignal(error, previousError)
 						 + calculateIntegralSignal(totalErrorExperienced);
+	printf("Signal: %f\n", finalSignal);
 	return (int) finalSignal;
 }
