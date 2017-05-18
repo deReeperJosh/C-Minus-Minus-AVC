@@ -4,6 +4,13 @@
 //CHANGE THIS FUCKING METHOD, IT'S JUST THE GENERAL IDEA
 //Skeleton code
 
+void getErrorWallks(){
+  int irReading1;
+  int irReading2;
+  int irReading3;
+    
+}
+
 //void getErrorWalls(){
   //int threshold = 0;
   //ir 1 - left
