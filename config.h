@@ -32,8 +32,8 @@ namespace constants {
 		static const int SLEEP_TIME_MICROSECONDS = 5000;
 	}
 	namespace PID {
-		static const double PROPORTIONAL_CONSTANT = 3;
-		static const double DERIVATIVE_CONSTANT = 0.5;
+		static const double PROPORTIONAL_CONSTANT = 0.5;
+		static const double DERIVATIVE_CONSTANT = 0.2;
 		//we aren't using integral signal for the moment
 		static const double INTEGRAL_CONSTANT = 0;
 	}
