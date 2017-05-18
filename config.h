@@ -31,6 +31,13 @@ namespace constants {
 		static const int MAX_SPEED = 254;
 		static const int SLEEP_TIME_SECONDS = 0;
 		static const int SLEEP_TIME_MICROSECONDS = 5000;
+		namespace spin {
+			static const char DIRECTION_LEFT = 'L';
+			static const char DIRECTION_RIGHT = 'R';
+			static const int MINIMUM_WHITENESS_VALUE = -10;
+			static const int MAXIMUM_WHITENESS_VALUE = 10;
+			static const int TURN_SPEED = 10;
+		}
 	}
 	namespace PID {
 		static const double PROPORTIONAL_CONSTANT = 0.5;

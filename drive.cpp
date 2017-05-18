@@ -7,18 +7,22 @@
 int previousError = 0;
 
 void lineDrive(const int error, const int previousError, const int totalErrorExperienced) {
-	//TODO: test to confirm setting the speed directly to the PID signal works as expected. It seemed to be earlier.
 	int scaledSpeed = getPIDSignal(error, previousError, totalErrorExperienced);
-
 	//certify that the scaled speed isn't negative
 	if (scaledSpeed < 0) scaledSpeed *= -1;
+	int offLineCount = 0;
 	if (isBlackEverywhere()) {
+		if (offLineCount > 5) {
+			spinUntilOnTrack(constants::vehicle::spin::DIRECTION_RIGHT);
+		}
 		printf("Should reverse. Error: %d\n", error);
 		driveBackward(constants::vehicle::STABLE_SPEED);
+		offLineCount += 1;
 	}
 	else if(error == 0) {
 		printf("Should be going forwards\n");
 		driveForward(constants::vehicle::STABLE_SPEED * 1.5);
+		offLineCount = 0;
 	}
 	else if (error < 0) {
 		turnRight(scaledSpeed);
