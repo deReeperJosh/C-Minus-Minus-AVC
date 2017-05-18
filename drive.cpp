@@ -17,7 +17,7 @@ void lineDrive(const int error, const int previousError, const int totalErrorExp
 	}
 	else if(error == 0){
 		printf("Should be going forwards\n");
-		driveForward(constants::vehicle::STABLE_SPEED);
+		driveForward(constants::vehicle::STABLE_SPEED / 1.5);
 	}
 	else if(error < 0){
 		turnRight(scaledSpeed);
