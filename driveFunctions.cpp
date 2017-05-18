@@ -18,21 +18,24 @@ void driveForward(int speed) { //takes a speed between the values -254 and 254
 }
 
 void driveBackward(int speed) {
-	driveForward(-speed);
+	set_motor(constants::vehicle::parts::RIGHT_MOTOR, (-constants::vehicle::REVERSE_SPEED) - speed);
+	set_motor(constants::vehicle::parts::LEFT_MOTOR, (-constants::vehicle::REVERSE_SPEED) - speed);
+	driveSleep();
+	stopDriving();
 }
 
 void turnRight(int speed) {
 	speed = certifySpeedIsSafe(speed);
-	set_motor(constants::vehicle::parts::RIGHT_MOTOR, constants::vehicle::STABLE_SPEED);
-	set_motor(constants::vehicle::parts::LEFT_MOTOR, (constants::vehicle::STABLE_SPEED) + speed);
+	set_motor(constants::vehicle::parts::RIGHT_MOTOR, constants::vehicle::STABLE_SPEED - speed);
+	set_motor(constants::vehicle::parts::LEFT_MOTOR, constants::vehicle::STABLE_SPEED + speed);
 	driveSleep();
 	stopDriving();
 }
 
 void turnLeft(int speed) {
 	speed = certifySpeedIsSafe(speed);
-	set_motor(constants::vehicle::parts::RIGHT_MOTOR, (constants::vehicle::STABLE_SPEED) + speed);
-	set_motor(constants::vehicle::parts::LEFT_MOTOR, constants::vehicle::STABLE_SPEED);
+	set_motor(constants::vehicle::parts::RIGHT_MOTOR, constants::vehicle::STABLE_SPEED + speed);
+	set_motor(constants::vehicle::parts::LEFT_MOTOR, constants::vehicle::STABLE_SPEED - speed);
 	driveSleep();
 	stopDriving();
 }
