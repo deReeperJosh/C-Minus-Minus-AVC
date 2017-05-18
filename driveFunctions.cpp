@@ -35,7 +35,7 @@ void turnRight(int speed) {
 void turnLeft(int speed) {
 	speed = certifySpeedIsSafe(speed);
 	set_motor(constants::vehicle::parts::RIGHT_MOTOR, constants::vehicle::STABLE_SPEED + speed);
-	set_motor(constants::vehicle::parts::LEFT_MOTOR, constants::vehicle::STABLE_SPEED - speed)
+	set_motor(constants::vehicle::parts::LEFT_MOTOR, constants::vehicle::STABLE_SPEED - speed);
 	driveSleep();
 	stopDriving();
 }
