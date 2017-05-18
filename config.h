@@ -23,8 +23,8 @@ namespace constants {
 	}
 	namespace vehicle {
 		namespace parts {
-			static const int LEFT_MOTOR = 2;
-			static const int RIGHT_MOTOR = 1;
+			static const int LEFT_MOTOR = 1;
+			static const int RIGHT_MOTOR = 2;
 		}
 		static const int STABLE_SPEED = 50;
 		static const int MAX_SPEED = 254;
@@ -32,7 +32,7 @@ namespace constants {
 		static const int SLEEP_TIME_MICROSECONDS = 5000;
 	}
 	namespace PID {
-		static const double PROPORTIONAL_CONSTANT = 0.5;
+		static const double PROPORTIONAL_CONSTANT = 0.7;
 		static const double DERIVATIVE_CONSTANT = 0.2;
 		//we aren't using integral signal for the moment
 		static const double INTEGRAL_CONSTANT = 0;
