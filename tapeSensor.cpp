@@ -97,7 +97,7 @@ bool isRedPatch() {
 			(averagePixelValues(pixelGreenessValues) + averagePixelValues(pixelBluenessValues)) / 2;
 		int averageRedValues = averagePixelValues(pixelRednessValues);
 		double ratioOfAverageRedValuesToNonRedValues = (double) averageRedValues / (double) averageNonRedValues;
-		if(ratioOfAverageRedValuesToNonRedValues >= constants::picture::redPatch::MINIMUM_RATIO_VALUE){
+		if (ratioOfAverageRedValuesToNonRedValues >= constants::picture::redPatch::MINIMUM_RATIO_VALUE) {
 			result = true;
 		}
 	}
@@ -109,10 +109,11 @@ bool isRedPatch() {
  * @param pixelWhitenessValues Pass a vector object of type int of the whiteness values of the pixels
  * @return Returns true if it is black everywhere, other wise it will return false
  */
-bool isBlackEverywhere(std::vector<int> pixelWhitenessValues){
+bool isBlackEverywhere() {
+	std::vector<int> pixelWhitenessValues = getPixelValues(3);
 	bool result = false;
-	int totalBlackPixels = totalPixelsWithinRange(constants::picture::MINIMUM_BLACK_VALUE,
-												  constants::picture::MINIMUM_BLACK_VALUE, pixelWhitenessValues);
+	int totalBlackPixels = totalPixelsWithinRange(
+		constants::picture::MINIMUM_BLACK_VALUE,constants::picture::MAXIMUM_BLACK_VALUE, pixelWhitenessValues);
 	if (totalBlackPixels == constants::picture::COLUMNS) {
 		result = true;
 	}

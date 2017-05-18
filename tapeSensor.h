@@ -11,4 +11,6 @@ int getError();
 
 bool isRedPatch();
 
+bool isBlackEverywhere();
+
 #endif //C_MINUS_MINUS_AVC_TAPESENSOR_H

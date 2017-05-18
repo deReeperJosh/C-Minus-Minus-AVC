@@ -11,7 +11,7 @@ namespace constants {
 		static const int MAXIMUM_POSSIBLE_PIXEL_VALUE = 255;
 		static const int ROWS = 240;
 		static const int COLUMNS = 320;
-		static const int MAXIMUM_BLACK_VALUE = 127;
+		static const int MAXIMUM_BLACK_VALUE = 90;
 		static const int MINIMUM_BLACK_VALUE = 0;
 		static const int MINIMUM_RED_VALUE = 100;
 		static const int MINIMUM_GREEN_VALUE = 100;
@@ -26,12 +26,17 @@ namespace constants {
 			static const int LEFT_MOTOR = 1;
 			static const int RIGHT_MOTOR = 2;
 		}
-		static const int STABLE_SPEED = 50;
+		static const int STABLE_SPEED = 75;
+		static const int REVERSE_SPEED = STABLE_SPEED / 2;
+		static const int MAX_SPEED = 254;
 		static const int SLEEP_TIME_SECONDS = 0;
 		static const int SLEEP_TIME_MICROSECONDS = 5000;
 	}
 	namespace PID {
-		static const int PROPORTIONAL_SCALE = 2;
+		static const double PROPORTIONAL_CONSTANT = 0.5;
+		static const double DERIVATIVE_CONSTANT = 0.5;
+		//we aren't using integral signal for the moment
+		static const double INTEGRAL_CONSTANT = 0;
 	}
 	namespace server {
 		//it would be nice to make this a constant
