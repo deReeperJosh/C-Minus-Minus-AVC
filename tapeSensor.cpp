@@ -139,7 +139,7 @@ int getError(std::vector<bool> pixelStates) {
 			totalError += pixelWeight;
 		}
 	}
-	totalError != 0 ? totalError /= totalWhitePixels : totalError = totalError;
+	if(totalWhitePixels != 0) totalError /= totalWhitePixels;
 	return totalError;
 }
 
